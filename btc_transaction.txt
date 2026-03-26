@@ -1,0 +1,129 @@
+{
+    "txid": "a397f7efcf10a717c4f280346c0962f653249de5b4792f48f129cc74cea0687a",
+    "hash": "03e565f09a95e3f3f636fc138ebbb952294ae68a8dc546cb5f0f09ec3489e645",
+    "version": 2,
+    "size": 312,
+    "vsize": 212,
+    "weight": 846,
+    "locktime": 0,
+    "vin": [
+        {
+            "txid": "f7dd637279222f5bd4fe118e55eddd402ceb01cd7ee732c34ba7a4a53a0d47a0",
+            "vout": 0,
+            "scriptSig": {
+                "asm": "",
+                "hex": ""
+            },
+            "txinwitness": [
+                "3aa161c025226af0d0b6aa3e1fcb35f2cc15b7d112ac3b5d4922a04f7776b8f378dc30ed724d45a967c922ac27e6da9e311dda77fe587196c18a0d69899c7c9f"
+            ],
+            "sequence": 4294967295
+        },
+        {
+            "txid": "1533731158a44cb124bc08eb57374ce139c119ecdaa20441140553bda0624149",
+            "vout": 0,
+            "scriptSig": {
+                "asm": "",
+                "hex": ""
+            },
+            "txinwitness": [
+                "5bd2b2919ed38c6f2a1c82d885fa20908456ed7f724bde0ef78864a6d4d1a4f50c8f02f80940e973f03a95bea8626f314cbf6586b3636a4ff3194d2cef38668f"
+            ],
+            "sequence": 4294967295
+        }
+    ],
+    "vout": [
+        {
+            "value": "0.00119446",
+            "n": 0,
+            "scriptPubKey": {
+                "asm": "1 edc7b2186ee8988a26460c761de53db6538523bcf00b110509afb72b97aa1670",
+                "desc": "rawtr(edc7b2186ee8988a26460c761de53db6538523bcf00b110509afb72b97aa1670)#yc97ulw3",
+                "hex": "5120edc7b2186ee8988a26460c761de53db6538523bcf00b110509afb72b97aa1670",
+                "address": "bc1pahrmyxrwazvg5fjxp3mpmefakefc2gau7q93zpgf47mjh9a2zecq8lke25",
+                "type": "witness_v1_taproot"
+            }
+        },
+        {
+            "value": "0.00003637",
+            "n": 1,
+            "scriptPubKey": {
+                "asm": "1 44a2ffcde795c39fed4488b26c125a1d27c5a77421bed9fb11ae9a6f20e61493",
+                "desc": "rawtr(44a2ffcde795c39fed4488b26c125a1d27c5a77421bed9fb11ae9a6f20e61493)#gx027shz",
+                "hex": "512044a2ffcde795c39fed4488b26c125a1d27c5a77421bed9fb11ae9a6f20e61493",
+                "address": "bc1pgj30ln08jhpelm2y3zexcyj6r5nutfm5yxldn7c346dx7g8xzjfsmtgnw6",
+                "type": "witness_v1_taproot"
+            }
+        }
+    ],
+    "fee": "0.00015863",
+    "hex": "02000000000102a0470d3aa5a4a74bc332e77ecd01eb2c40dded558e11fed45b2f22797263ddf70000000000ffffffff494162a0bd5305144104a2daec19c139e14c3757eb08bc24b14ca458117333150000000000ffffffff0296d2010000000000225120edc7b2186ee8988a26460c761de53db6538523bcf00b110509afb72b97aa1670350e00000000000022512044a2ffcde795c39fed4488b26c125a1d27c5a77421bed9fb11ae9a6f20e6149301403aa161c025226af0d0b6aa3e1fcb35f2cc15b7d112ac3b5d4922a04f7776b8f378dc30ed724d45a967c922ac27e6da9e311dda77fe587196c18a0d69899c7c9f01405bd2b2919ed38c6f2a1c82d885fa20908456ed7f724bde0ef78864a6d4d1a4f50c8f02f80940e973f03a95bea8626f314cbf6586b3636a4ff3194d2cef38668f00000000"
+}
+
+
+
+
+"""
+txid: The Transaction ID. This is the unique "fingerprint" (hash) of the transaction used to track it on the blockchain.
+
+hash: The Witness Hash. For SegWit/Taproot transactions, this includes the signature data; for older ones, it matches the txid.
+
+version: The protocol version (usually 1 or 2).
+
+size / vsize / weight: These measure the "physical space" the transaction takes on the blockchain. Vsize (virtual size)
+is what determines the transaction fee cost.
+
+locktime: Usually 0. It specifies the earliest block time/height the transaction can be added to the blockchain.
+
+vin (Inputs): Where the money comes from
+This list contains the "coins" being spent.
+
+txid & vout: These point to a previous transaction and a specific output number
+within it. This proves where the sender got the funds.
+
+scriptSig: Left empty here because this is a Taproot (SegWit) transaction; the authorization is moved to the witness.
+
+txinwitness: This is the Digital Signature. It proves the person spending the money actually owns the private keys for those previous addresses.
+
+sequence: A field used for features like "Replace-By-Fee" (RBF) or relative timelocks. 4294967295 (max value) usually means those features are disabled.
+
+vout (Outputs): Where the money is going
+This list shows the new destinations.
+
+value: The amount of BTC being sent to this specific address.
+
+n: The index of the output (Output 0, Output 1).
+
+scriptPubKey: The "locking script."
+
+asm / hex: The raw computer code that "locks" the Bitcoin.
+
+address: The human-readable Bitcoin address (starting with bc1p, which signifies a Taproot address).
+
+type: Identified as witness_v1_taproot, the most modern Bitcoin address type.
+
+The Bottom Line
+fee: The difference between the total input value and total output value (0.00015863 BTC). This is paid to the
+miner who includes the transaction in a block.
+
+hex: The raw, serialized binary data of the entire transaction that is actually broadcast to the network.
+
+Would you like to calculate the total amount spent versus the total amount received from this data?
+
+
+
+
+asm (Assembly): The human-readable locking script. For Taproot (v1), it’s always 1 <32-byte-pubkey>. The 1 represents the witness version.
+
+hex: The machine-readable version of the asm. It encodes the opcodes (like 0x51 for 1) and the data length so the Bitcoin nodes can process it.
+
+desc (Output Descriptor): A standardized string used by wallets to export/import the script. It includes the
+script type (rawtr) and the public key. The # at the end marks the checksum to prevent typing errors during import.
+
+address: The Bech32m encoding of the hex. It’s a human-friendly representation of the locking script. For Taproot, it always starts with bc1p.
+
+Relationship: The hex is the source of truth. The asm is the decoded logic, the address is the encoded destination, and
+ the desc is the administrative "instruction manual" for a wallet to track that specific script.
+
+
+"""

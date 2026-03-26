@@ -1,31 +1,63 @@
 from blockchain import Blockchain
-from block import Block
-from transaction import Transactionday
+from transaction import Transaction
 
 my_blockchain = Blockchain()
 
-# Add some blocks
-my_blockchain.add_block(Block(1, "Alice pays Bob 5 BTC", ""))
-my_blockchain.add_block(Block(2, "Bob pays Charlie 2 BTC", ""))
-block_3 = Block(3, "Otis pays Nuel 10btc", "")
-my_blockchain.add_block(block_3)
+
+def create_transaction(sender, recipient, amount, private_key):
+    tx = Transaction(sender, recipient, amount)
+    tx.sign_transaction(private_key)
+    return tx
+
+
+# create transactions
+tx1 = create_transaction("otis", "chatgpt", 2, "otis_private_key")
+tx2 = create_transaction("chatgpt", "chat_not_gpt", 0.5, "chatgpt_private_key")
+tx3 = create_transaction("chat_not_gpt", "Otis", 1, "chat_not_gpt_private_key")
+
+my_blockchain.add_transaction(tx1)
+my_blockchain.add_transaction(tx2)
+my_blockchain.add_transaction(tx3)
+
+print(my_blockchain.pending_transactions)
+
+my_blockchain.mine_pending_transactions("bcq1234567891")
+
+block1 = my_blockchain.chain[1]
+print(block1.transactions[1].txid)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # my_blockchain.chain[1].transactions = "Alice pays Bob 500 BTC"
 # print("Is blockchain valid?", my_blockchain.is_chain_valid())
 # my_blockchain.chain[1].hash = my_blockchain.chain[1].calculate_hash()
 
 
-for block in my_blockchain.chain:
-    print("Index:", block.index)
-    print("Transactions:", block.transactions)
-    print("Hash:", block.hash)
-    print("Previous Hash:", block.previous_hash)
-    print("Nonce:", block.nonce)
-    print("-" * 50)
-
-
-# block_4 = Block(4, "Ez pays Uvie 31 BTC", "")
-# my_blockchain.add_block(block_4)
+# for block in my_blockchain.chain:
+#     print("Index:", block.index)
+#     print("Transactions:", block.transactions)
+#     print("Hash:", block.hash)
+#     print("Previous Hash:", block.previous_hash)
+#     print("Nonce:", block.nonce)
+#     print("-" * 50)
 
 
 
@@ -58,12 +90,6 @@ print("Is blockchain valid?", my_blockchain.is_chain_valid())
 
 """
 
-
-
-# latest_block = my_blockchain.get_latest_block()
-# print(latest_block.transactions)
-
-#block_4 = Block(4, "Peter sent 2.5btc to Paul")
 
 
 

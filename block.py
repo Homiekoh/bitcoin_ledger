@@ -34,7 +34,7 @@ class Block:
         print(f"Block {self.index} mined: {self.hash}")
 
     def calculate_merkle_root(self):
-        tx_hashes = [tx.calculate_hash() for tx in self.transactions]
+        tx_hashes = [tx.txid for tx in self.transactions]
 
         if not tx_hashes:
             return None
@@ -53,6 +53,8 @@ class Block:
             tx_hashes = new_level
 
         return tx_hashes[0]
+
+
 
 
 
